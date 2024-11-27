@@ -1,0 +1,23 @@
+# Nix build outputs
+result
+result-*
+
+# direnv environment files
+.direnv/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*~
+\#*\#
+.\#*
+
+# macOS system files
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# pre-commit cache
+.pre-commit-cache/

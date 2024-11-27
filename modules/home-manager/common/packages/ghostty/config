@@ -1,0 +1,16 @@
+theme = dark:Rose Pine,light:Rose Pine Dawn
+
+font-size = 16
+
+macos-non-native-fullscreen = false
+macos-titlebar-style = "transparent"
+
+auto-update = off
+fullscreen = false
+
+window-height = 768
+window-width = 1376
+
+cursor-style = "block"
+cursor-style-blink = true
+shell-integration-features = no-cursor

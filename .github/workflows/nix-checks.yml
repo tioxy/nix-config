@@ -1,0 +1,33 @@
+name: Nix Configuration Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  nix-checks:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v16
+
+      - name: Setup Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v8
+
+      - name: Check Flake
+        run: nix flake check
+
+      - name: Check Formatting
+        run: nix run nixpkgs#nixpkgs-fmt -- --check .
+
+      - name: Lint Nix code
+        run: nix run nixpkgs#statix -- check
+
+      - name: Build System
+        run: nix build .#darwinConfigurations.Gabriels-MacBook-Pro.system
