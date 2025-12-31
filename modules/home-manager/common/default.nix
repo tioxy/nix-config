@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ./packages/1password
+    ./packages/bettertouchtool
     ./packages/ghostty
     ./packages/starship
     ./coding.nix

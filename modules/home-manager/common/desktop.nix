@@ -14,7 +14,6 @@
           iina
           itsycal
           numi
-          raycast
         ];
       in
       with pkgs; default ++ lib.optionalAttrs stdenv.isDarwin darwin;

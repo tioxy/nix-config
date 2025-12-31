@@ -19,6 +19,7 @@
       "ableton-live-suite"
       "affinity"
       "airbuddy"
+      "alfred"
       "arc"
       "bettertouchtool"
       "blender"
