@@ -1,6 +1,6 @@
 # nix-config
 
-Unified configuration for macOS (nix-darwin), managed via Nix Flakes and Home Manager.
+Unified configuration managed via Nix Flakes and Home Manager.
 
 ## Quick Start
 
@@ -10,8 +10,8 @@ Clone the repsitory and move it to a shared folder.
 If changing the folder, change the alias `rebuild` for it.
 
 ```bash
-git clone git@github.com:tioxy/nix-darwin.git /etc/nix-config
-sudo mv nix-darwin /etc/nix-config
+git clone git@github.com:tioxy/nix-config.git /etc/nix-config
+sudo mv nix-config /etc/nix-config
 ```
 
 ### 2. Allow direnv
@@ -44,7 +44,6 @@ sudo darwin-rebuild switch --flake /etc/nix-config --impure
     ├── darwin/         # macOS system modules
     └── home-manager/   # User configurations
         ├── common/     # Shared user settings
-        ├── packets/    # Individual package modules
         ├── tioxy/      # User 'tioxy' specific
         └── work/       # User 'work' specific
 ```
