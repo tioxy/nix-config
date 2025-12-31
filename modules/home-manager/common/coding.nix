@@ -16,4 +16,12 @@
       TERM = "xterm-256color";
     };
   };
+
+  programs = {
+    zsh = {
+      shellAliases = {
+        agy = "antigravity";
+      };
+    };
+  };
 }

@@ -5,6 +5,7 @@
     ./packages/starship
     ./coding.nix
     ./containers.nix
+    ./darwin.nix
     ./desktop.nix
     ./git.nix
   ];
