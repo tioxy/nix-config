@@ -5,29 +5,20 @@
     ./packages/starship
     ./coding.nix
     ./containers.nix
+    ./desktop.nix
     ./git.nix
-    ./os/darwin.nix
   ];
 
   home = {
-    packages =
-      let
-        desktopApps = with pkgs; [
-          obsidian
-          protonmail-desktop
-          spotify
-        ];
-        CLIs = with pkgs; [
-          bat
-          fd
-          fzf
-          jq
-          ripgrep
-          tmux
-          tree
-        ];
-      in
-      desktopApps ++ CLIs;
+    packages = with pkgs; [
+      bat
+      fd
+      fzf
+      jq
+      ripgrep
+      tmux
+      tree
+    ];
   };
 
   programs = {
