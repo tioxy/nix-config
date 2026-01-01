@@ -1,8 +1,14 @@
 { config, pkgs, lib, ... }:
 
 let
-  sshExtraOption = "'~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock'";
-  gitSSHProgram = "${pkgs._1password-gui}/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+  sshAgentSock =
+    if pkgs.stdenv.isDarwin
+    then "'~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock'"
+    else "~/.1password/agent.sock";
+  gitSignSSH =
+    if pkgs.stdenv.isDarwin
+    then "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+    else "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
 in
 {
   home = {
@@ -13,11 +19,17 @@ in
   };
 
   programs = {
+    zsh = {
+      initContent = lib.mkAfter ''
+        source ~/.config/op/plugins.sh
+      '';
+    };
+
     ssh = {
       matchBlocks = {
         "*" = {
           extraOptions = {
-            IdentityAgent = sshExtraOption;
+            IdentityAgent = sshAgentSock;
           };
         };
       };
@@ -28,7 +40,7 @@ in
         commit.gpgsign = true;
         gpg = {
           format = "ssh";
-          ssh.program = gitSSHProgram;
+          ssh.program = gitSignSSH;
         };
       };
       signing = {
