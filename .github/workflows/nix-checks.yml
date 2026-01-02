@@ -19,6 +19,8 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v16
       - name: Setup pre-commit
         uses: pre-commit/action@v3.0.1
+        with:
+          extra_args: --all-files
       # TODO: find a good alternative for the pipeline with less duration
       #- name: Build System
       #  run: nix build .#darwinConfigurations.Gabriels-MacBook-Pro.system
