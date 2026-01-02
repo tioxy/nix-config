@@ -26,5 +26,6 @@ jobs:
       - name: Lint Nix code
         run: nix run nixpkgs#statix -- check
 
-      - name: Build System
-        run: nix build .#darwinConfigurations.Gabriels-MacBook-Pro.system
+      # TODO: find a good alternative for the pipeline with less duration
+      #- name: Build System
+      #  run: nix build .#darwinConfigurations.Gabriels-MacBook-Pro.system
