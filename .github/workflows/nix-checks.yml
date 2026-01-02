@@ -13,13 +13,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      - name: Setup python for pre-commit
+        uses: actions/setup-python@v3
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v16
-
-      - name: Run pre-commit checks
-        run: nix develop -c pre-commit run --all-files
-
+      - name: Setup pre-commit
+        uses: pre-commit/action@v3.0.1
       # TODO: find a good alternative for the pipeline with less duration
       #- name: Build System
       #  run: nix build .#darwinConfigurations.Gabriels-MacBook-Pro.system
