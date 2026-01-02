@@ -1,14 +1,26 @@
-{
+{ lib, ... }: {
   imports = [
-    ./gui.nix
     ./homebrew.nix
     ./packages.nix
-    ./users.nix
   ];
 
-  system.stateVersion = 6;
   ids.gids.nixbld = 350; # Fix for nixbld group ID mismatch
-  security.pam.services.sudo_local.touchIdAuth = true; # Enable Touch ID for sudo
+  system = {
+    stateVersion = 6;
+    activationScripts.extraActivation.text = lib.mkAfter ''
+      # Enable Bluetooth debugging
+      /usr/bin/defaults write /Library/Preferences/com.apple.Bluetooth.plist EnableBluetoothDebugLogs 1
+      /usr/bin/defaults write /Library/Preferences/com.apple.Bluetooth.plist EnableTailLog 1
+    '';
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToEscape = true;
+    };
+  };
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    watchIdAuth = true;
+  };
 
   nix = {
     enable = true;
