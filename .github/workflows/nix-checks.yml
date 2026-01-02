@@ -17,14 +17,8 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v16
 
-      - name: Check Flake
-        run: nix flake check
-
-      - name: Check Formatting
-        run: nix run nixpkgs#nixpkgs-fmt -- --check .
-
-      - name: Lint Nix code
-        run: nix run nixpkgs#statix -- check
+      - name: Run pre-commit checks
+        run: nix develop -c pre-commit run --all-files
 
       # TODO: find a good alternative for the pipeline with less duration
       #- name: Build System
