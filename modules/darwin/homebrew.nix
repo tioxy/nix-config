@@ -34,6 +34,7 @@
       "mediahuman-audio-converter"
       "obs"
       "parsec"
+      "rocket"
       "soulseek"
       "steam"
       "swinsian"
