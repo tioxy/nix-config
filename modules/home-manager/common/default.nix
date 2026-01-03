@@ -2,6 +2,7 @@
   imports = [
     ./packages/1password
     ./packages/bettertouchtool
+    ./packages/direnv
     ./packages/ghostty
     ./packages/starship
     ./coding.nix
@@ -27,11 +28,6 @@
     ssh = {
       enable = true;
       enableDefaultConfig = false;
-    };
-
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
     };
 
     zsh = {
