@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   homebrew = {
     enable = true;
     onActivation = {
@@ -8,38 +8,53 @@
     };
 
     # Disable homebrew tracking
-    extraConfig = ''
-      cask 'ableton-live-suite', args: { require_sha: false, auto_updates: true }
-      cask 'affinity', args: { require_sha: false, auto_updates: true }
-      cask 'discord', args: { require_sha: false, auto_updates: true }
-      cask 'steam', args: { require_sha: false, auto_updates: true }
-    '';
+    extraConfig =
+      let
+        ignoreUpdates = [
+          "ableton-live-suite"
+          "affinity"
+          "discord"
+          "steam"
+          "windows-app"
+        ];
+      in
+      lib.concatMapStringsSep "\n" (cask: "cask '${cask}', args: { require_sha: false, auto_updates: true }") ignoreUpdates;
 
-    casks = [
-      "ableton-live-suite"
-      "affinity"
-      "airbuddy"
-      "alfred"
-      "arc"
-      "bettertouchtool"
-      "blender"
-      "calibre"
-      "cleanshot"
-      "discord"
-      "ferdium"
-      "folx"
-      "godot"
-      "keyclu"
-      "logi-options+"
-      "mediahuman-audio-converter"
-      "obs"
-      "parsec"
-      "rocket"
-      "soulseek"
-      "steam"
-      "swinsian"
-      "voiceink"
-    ];
+    casks =
+      let
+        common = [
+          "airbuddy"
+          "alfred"
+          "arc"
+          "bettertouchtool"
+          "cleanshot"
+          "ferdium"
+          "keyclu"
+          "logi-options+"
+          "rocket"
+          "voiceink"
+        ];
+        tioxy = [
+          "ableton-live-suite"
+          "affinity"
+          "blender"
+          "calibre"
+          "discord"
+          "folx"
+          "godot"
+          "mediahuman-audio-converter"
+          "obs"
+          "parsec"
+          "soulseek"
+          "steam"
+          "swinsian"
+        ];
+        work = [
+          "openwebstart"
+          "windows-app"
+        ];
+      in
+      common ++ tioxy ++ work;
 
     brews = [
       "mas"
@@ -47,10 +62,11 @@
     ];
 
     masApps = {
-      "Xcode" = 497799835;
-      "Things" = 904280696;
+      "CleanMyKeyboard" = 6468120888;
       "Dropover" = 1355679052;
       "Hand Mirror" = 1502839586;
+      "Things" = 904280696;
+      "Xcode" = 497799835;
     };
   };
 }

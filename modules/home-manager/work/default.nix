@@ -16,12 +16,6 @@
   programs = {
     home-manager.enable = true;
 
-    # Required for government certificates
-    java = {
-      enable = true;
-      package = pkgs.jdk8;
-    };
-
     git = {
       settings = {
         user = {

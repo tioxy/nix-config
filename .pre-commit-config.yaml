@@ -11,7 +11,6 @@ repos:
     rev: v1.3.0
     hooks:
       - id: nixpkgs-fmt
-        args: ["--check"]
 
   - repo: local
     hooks:
