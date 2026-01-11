@@ -65,6 +65,7 @@
       "CleanMyKeyboard" = 6468120888;
       "Dropover" = 1355679052;
       "Hand Mirror" = 1502839586;
+      "PDFgear" = 6469021132;
       "Things" = 904280696;
       "Xcode" = 497799835;
     };
