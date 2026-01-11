@@ -40,7 +40,7 @@
         eval "$(direnv hook zsh)"
       '';
       shellAliases = {
-        rebuild = "sudo darwin-rebuild switch --flake /etc/nix-config --impure";
+        rebuild = "sudo darwin-rebuild switch --flake /etc/nix-config#$USER";
         modules = "cd /etc/nix-config/modules";
       };
     };

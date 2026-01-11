@@ -31,7 +31,7 @@
         overlays = sharedOverlays;
       };
 
-      forDarwin = system: hostName: darwin.lib.darwinSystem {
+      forDarwin = system: hostName: user: darwin.lib.darwinSystem {
         inherit system;
         specialArgs = {
           inherit inputs;
@@ -44,30 +44,30 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              users.${user} = import ./modules/home-manager/${user};
               extraSpecialArgs = { inherit inputs; };
-              backupFileExtension = "backup";
-              users =
-                let
-                  allUsers = {
-                    tioxy = import ./modules/home-manager/tioxy;
-                    work = import ./modules/home-manager/work;
-                  };
-                  targetUser = builtins.getEnv "SUDO_USER";
-                  envUser = builtins.getEnv "USER";
-                  effectiveUser = if targetUser != "" then targetUser else envUser;
-                in
-                if builtins.hasAttr effectiveUser allUsers then
-                  { "${effectiveUser}" = allUsers.${effectiveUser}; }
-                else
-                  allUsers;
             };
           }
+        ];
+      };
+
+      forHome = system: user: home-manager.lib.homeManagerConfiguration {
+        pkgs = genPkgs system;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./modules/home-manager/${user}
         ];
       };
     in
     {
       darwinConfigurations = {
-        "Gabriels-MacBook-Pro" = forDarwin "aarch64-darwin" "macbook-pro";
+        "tioxy" = forDarwin "aarch64-darwin" "macbook-pro" "tioxy";
+        "work" = forDarwin "aarch64-darwin" "macbook-pro" "work";
+      };
+
+      homeConfigurations = {
+        "tioxy" = forHome "aarch64-darwin" "tioxy";
+        "work" = forHome "aarch64-darwin" "work";
       };
 
       devShells = nixpkgs.lib.genAttrs supportedSystems (system:
