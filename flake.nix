@@ -58,17 +58,20 @@
           ./modules/home-manager/${user}
         ];
       };
+
+      users = {
+        tioxy = { system = "aarch64-darwin"; hostname = "macbook-pro"; };
+        work = { system = "aarch64-darwin"; hostname = "macbook-pro"; };
+      };
     in
     {
-      darwinConfigurations = {
-        "tioxy" = forDarwin "aarch64-darwin" "macbook-pro" "tioxy";
-        "work" = forDarwin "aarch64-darwin" "macbook-pro" "work";
-      };
+      darwinConfigurations = nixpkgs.lib.mapAttrs
+        (user: conf: forDarwin conf.system conf.hostname user)
+        users;
 
-      homeConfigurations = {
-        "tioxy" = forHome "aarch64-darwin" "tioxy";
-        "work" = forHome "aarch64-darwin" "work";
-      };
+      homeConfigurations = nixpkgs.lib.mapAttrs
+        (user: conf: forHome conf.system user)
+        users;
 
       devShells = nixpkgs.lib.genAttrs supportedSystems (system:
         let pkgs = genPkgs system; in {
@@ -76,7 +79,6 @@
             buildInputs = with pkgs; [
               nixpkgs-fmt
               statix
-              # nix-linter is marked as broken, removed
             ];
           };
         }
