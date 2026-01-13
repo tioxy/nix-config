@@ -52,6 +52,7 @@
         work = [
           "openwebstart"
           "windows-app"
+          "yubico-authenticator"
         ];
       in
       common ++ tioxy ++ work;
