@@ -10,6 +10,7 @@ in
       docker-client
       docker-compose
       docker-compose-language-service
+      docker-credential-helpers
       k9s
       kubectl
     ];
