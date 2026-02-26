@@ -31,6 +31,7 @@
           "ferdium"
           "keyclu"
           "logi-options+"
+          "pdf-expert"
           "rocket"
           "voiceink"
         ];
