@@ -46,6 +46,7 @@
           "mediahuman-audio-converter"
           "obs"
           "parsec"
+          "rekordbox"
           "soulseek"
           "steam"
           "swinsian"
@@ -67,9 +68,9 @@
       "CleanMyKeyboard" = 6468120888;
       "Dropover" = 1355679052;
       "Hand Mirror" = 1502839586;
+      "Minizones" = 6504722514;
       "Things" = 904280696;
       "Xcode" = 497799835;
-      "Minizones" = 6504722514;
     };
   };
 }
