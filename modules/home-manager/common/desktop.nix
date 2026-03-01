@@ -6,6 +6,7 @@
           obsidian
           protonmail-desktop
           spotify
+          tailscale
         ];
 
         darwin = with pkgs; [

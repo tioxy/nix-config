@@ -1,7 +1,7 @@
 { lib, ... }: {
   imports = [
+    ./packages
     ./homebrew.nix
-    ./packages.nix
   ];
 
   ids.gids.nixbld = 350; # Fix for nixbld group ID mismatch

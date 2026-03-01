@@ -1,4 +1,9 @@
 { config, pkgs, lib, ... }: {
+  imports = [
+    ./tailscale.nix
+    ./1password.nix
+  ];
+
   environment = {
     # All users, including root
     systemPackages = with pkgs; [
@@ -36,15 +41,6 @@
       enable = true;
       enableCompletion = false;
       enableBashCompletion = true;
-    };
-
-    # Required to avoid breaking 1password through home-manager
-    # https://github.com/nix-darwin/nix-darwin/pull/1438/files
-    _1password = {
-      enable = true;
-    };
-    _1password-gui = {
-      enable = true;
     };
   };
 }
