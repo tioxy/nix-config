@@ -17,10 +17,16 @@
       remapCapsLockToEscape = true;
     };
   };
+
   security.pam.services.sudo_local = {
     touchIdAuth = true;
     watchIdAuth = true;
   };
+
+  networking.dns = [
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
 
   nix = {
     enable = true;
