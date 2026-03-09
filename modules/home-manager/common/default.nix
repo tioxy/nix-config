@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+let
+  ipTools = if pkgs.stdenv.isDarwin then pkgs.iproute2mac else pkgs.iproute2;
+in
+{
   imports = [
     ./packages/1password
     ./packages/bettertouchtool
@@ -17,6 +21,7 @@
       bat
       fd
       fzf
+      ipTools
       jq
       ripgrep
       tmux
