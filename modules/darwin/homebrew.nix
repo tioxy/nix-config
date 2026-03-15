@@ -43,6 +43,7 @@
           "discord"
           "folx"
           "godot"
+          "krita"
           "mediahuman-audio-converter"
           "obs"
           "parsec"
@@ -50,6 +51,7 @@
           "soulseek"
           "steam"
           "swinsian"
+          "wacom-tablet"
         ];
         work = [
           "openwebstart"
