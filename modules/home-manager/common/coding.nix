@@ -7,6 +7,8 @@
   home = {
     packages = with pkgs; [
       antigravity
+      claude-code
+      gemini-cli
       gh
       vscode
     ];
