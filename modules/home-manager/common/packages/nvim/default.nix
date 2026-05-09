@@ -8,8 +8,8 @@
       # Language servers
       lua-language-server
       nil # Nix LS
-      nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted # html, css, json, eslint
+      typescript-language-server
+      vscode-langservers-extracted # html, css, json, eslint
 
       # Tools
       ripgrep
