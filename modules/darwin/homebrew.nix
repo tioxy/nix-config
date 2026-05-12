@@ -29,6 +29,7 @@
           "bettertouchtool"
           "cleanshot"
           "ferdium"
+          "google-chrome" # playwright only
           "keyclu"
           "logi-options+"
           "pdf-expert"
