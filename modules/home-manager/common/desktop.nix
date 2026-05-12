@@ -10,7 +10,6 @@
         ];
 
         darwin = with pkgs; [
-          caffeine
           ice-bar
           iina
           itsycal

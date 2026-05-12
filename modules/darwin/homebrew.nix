@@ -41,6 +41,7 @@
           "affinity"
           "blender"
           "calibre"
+          "caffeine" # home-manager breaking
           "discord"
           "folx"
           "godot"
