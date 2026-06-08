@@ -5,6 +5,8 @@
       autoUpdate = true;
       cleanup = "zap";
       upgrade = true;
+      # Newer Homebrew requires explicit force for `brew bundle --cleanup`.
+      extraFlags = [ "--force" ];
     };
 
     # Disable homebrew tracking

@@ -26,11 +26,9 @@ in
     };
 
     ssh = {
-      matchBlocks = {
+      settings = {
         "*" = {
-          extraOptions = {
-            IdentityAgent = sshAgentSock;
-          };
+          IdentityAgent = sshAgentSock;
         };
       };
     };
