@@ -28,6 +28,7 @@
           "arc"
           "bettertouchtool"
           "cleanshot"
+          "steipete/tap/codexbar"
           "ferdium"
           "google-chrome" # playwright only
           "keyclu"
@@ -42,6 +43,7 @@
           "blender"
           "calibre"
           "caffeine" # home-manager breaking
+          "cavalry"
           "discord"
           "folx"
           "godot"
@@ -53,6 +55,7 @@
           "soulseek"
           "steam"
           "swinsian"
+          "touchdesigner"
           "wacom-tablet"
         ];
         work = [
