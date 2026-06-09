@@ -10,6 +10,7 @@
       claude-code
       gemini-cli
       gh
+      opencode
       vscode
     ];
 
