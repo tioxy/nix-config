@@ -69,7 +69,7 @@
       common ++ tioxy ++ work;
 
     brews = [
-      "kimi-cli"
+      "kimi-code"
       "mas"
       "pinentry-mac"
     ];
